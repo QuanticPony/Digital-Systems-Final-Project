@@ -17,7 +17,7 @@ My_Renderer::My_Renderer(float X_MIN, float X_MAX, float Y_MIN, float Y_MAX)
     int argc = 1;
 
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_DOUBLE);
+    glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB);
     glClearColor(0, 0, 0, 1);
 
     glutCreateWindow("Prueba 3");
@@ -37,30 +37,29 @@ void My_Renderer::swap_buffers()
     glutPostRedisplay();
 }
 
-void My_Renderer::render(Particle *balls, int balls_number)
+void My_Renderer::render(Particle *balls, int balls_number, float R, float G, float B)
 {
     for (int b = 0; b < balls_number; b++)
     {
-        draw(balls[b]);
+        draw(balls[b], R, G, B);
     }
 }
 
-void My_Renderer::render(Line *lines, int lines_number)
+void My_Renderer::render(Line *lines, int lines_number, float R, float G, float B)
 {
     for (int l = 0; l < lines_number; l++)
     {
-        draw(lines[l]);
+        draw(lines[l], R, G, B);
     }
 }
 
-void My_Renderer::render(Block *blocks, int blocks_number)
+void My_Renderer::render(Block *blocks, int blocks_number, float R, float G, float B)
 {
     for (int B = 0; B < blocks_number; B++)
     {
-        draw(blocks[B]);
+        draw(blocks[B], R, G, B);
     }
 }
-
 
 float My_Renderer::x_convertor(float x)
 {
@@ -72,7 +71,7 @@ float My_Renderer::y_convertor(float y)
     return 2 * (y - Y_MIN) / (float)(Y_MAX - Y_MIN) - 1;
 }
 
-void My_Renderer::draw(Particle ball)
+void My_Renderer::draw(Particle ball, float R, float G, float B)
 {
     static float cosfs[SEGMENTS_IN_CIRCLE];
     static float sinfs[SEGMENTS_IN_CIRCLE];
@@ -89,6 +88,7 @@ void My_Renderer::draw(Particle ball)
         first = false;
     }
 
+    glColor3f(R, G, B);
     glBegin(GL_LINE_LOOP);
     for (int ii = 0; ii < SEGMENTS_IN_CIRCLE; ii++)
     {
@@ -100,16 +100,18 @@ void My_Renderer::draw(Particle ball)
     glEnd();
 }
 
-void My_Renderer::draw(Line line)
+void My_Renderer::draw(Line line, float R, float G, float B)
 {
+    glColor3f(R, G, B);
     glBegin(GL_LINES);
     glVertex2f(x_convertor(line.position.x), y_convertor(line.position.y));
     glVertex2f(x_convertor(line.line.x + line.position.x), y_convertor(line.line.y + line.position.y));
     glEnd();
 }
 
-void My_Renderer::draw(Block block)
+void My_Renderer::draw(Block block, float R, float G, float B)
 {
+    glColor3f(R, G, B);
     glBegin(GL_QUADS);
     glVertex2f(x_convertor(block.position.x - block.w / 2), y_convertor(block.position.y - block.h / 2));
     glVertex2f(x_convertor(block.position.x - block.w / 2), y_convertor(block.position.y + block.h / 2));

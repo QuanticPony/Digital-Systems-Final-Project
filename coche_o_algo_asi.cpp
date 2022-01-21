@@ -11,16 +11,7 @@
 #include <GL/glut.h>
 #include <GL/freeglut.h>
 
-#include "main.h"
-
-#include "Vector2D.h"
-#include "Line.h"
-#include "Particle.h"
-#include "Block.h"
-#include "Collisions.h"
-
-#include "Renderer.h"
-#include "Simulation.h"
+#include "physics.h"
 
 float my_random()
 {
@@ -63,20 +54,20 @@ void display()
 {
 	simulation->evolve(10);
 	my_renderer->clear();
-	my_renderer->render(simulation->lines, simulation->lines_number);
-	my_renderer->render(simulation->balls, simulation->balls_number);
-	my_renderer->render(simulation->blocks, simulation->blocks_number);
-	my_renderer->render(in_front, 1);
-	my_renderer->render(checker, 1);
+	my_renderer->render(simulation->lines, simulation->lines_number, 1,1,1);
+	my_renderer->render(simulation->balls, simulation->balls_number, 1,1,1);
+	my_renderer->render(simulation->blocks, simulation->blocks_number, 0,1,0);
+	my_renderer->render(in_front, 1, 1,1,1);
+	my_renderer->render(checker, 1, 1,0,0);
 	my_renderer->swap_buffers();
 }
 
 void display_static()
 {
 	my_renderer->clear();
-	my_renderer->render(simulation->lines, simulation->lines_number);
-	my_renderer->render(simulation->balls, simulation->balls_number);
-	my_renderer->render(simulation->blocks, simulation->blocks_number);
+	my_renderer->render(simulation->lines, simulation->lines_number, 1,1,1);
+	my_renderer->render(simulation->balls, simulation->balls_number, 1,1,1);
+	my_renderer->render(simulation->blocks, simulation->blocks_number, 0,1,0);
 	my_renderer->swap_buffers();
 }
 
@@ -85,17 +76,17 @@ void display_background()
 	static bool first = true;
 
 	my_renderer->clear();
-	my_renderer->render(simulation->lines, simulation->lines_number);
-	my_renderer->render(simulation->balls, simulation->balls_number);
-	my_renderer->render(simulation->blocks, simulation->blocks_number);
+	my_renderer->render(simulation->lines, simulation->lines_number, 1,1,1);
+	my_renderer->render(simulation->balls, simulation->balls_number, 1,1,1);
+	my_renderer->render(simulation->blocks, simulation->blocks_number, 0,1,0);
 	if (first) {
-		my_renderer->render(in_front, 1);
+		my_renderer->render(in_front, 1, 1,1,1);
 	}
 	my_renderer->swap_buffers();
 	first = !first;
 }
 
-#include "Keyboard.h"
+#include "physics/Keyboard.h"
 
 void checker_keyboard(unsigned char key, int x, int y){
 	if (key==' '){

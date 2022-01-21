@@ -10,6 +10,9 @@
 
 #include <iostream>
 
+void display();
+void display_static();
+
 void stop_handler(bool want_stopped)
 {
     static bool stopped = false;

@@ -27,16 +27,16 @@ public:
 
     float x_convertor(float x); //Converts x position to display relative units
     float y_convertor(float y); //Converts y position to display relative units
-    void render(Particle *balls, int balls_number); //Renders the given Particles
-    void render(Line *lines, int lines_number); //Renders the given Lines
-    void render(Block *blocks, int blocks_number); //Renders the given Blocks
+    void render(Particle *balls, int balls_number, float R, float G, float B); //Renders the given Particles
+    void render(Line *lines, int lines_number, float R, float G, float B); //Renders the given Lines
+    void render(Block *blocks, int blocks_number, float R, float G, float B); //Renders the given Blocks
 
     void swap_buffers(); //Swap buffers, must be used to render a frame in the display
     void clear(); //Clears the actual buffer
 
-    void draw(Particle ball); //Draws a single Particle
-    void draw(Line line); //Draws a single Line
-    void draw(Block block); //Draws a single Block
+    void draw(Particle ball, float R, float G, float B); //Draws a single Particle
+    void draw(Line line, float R, float G, float B); //Draws a single Line
+    void draw(Block block, float R, float G, float B); //Draws a single Block
 };
 
 #include "Renderer.cpp"

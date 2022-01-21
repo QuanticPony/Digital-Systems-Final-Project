@@ -25,3 +25,12 @@ float Y_MAX = WINDOW_HEIGHT;
 #else
 #include <unistd.h>
 #endif
+
+#include "physics/Vector2D.h"
+#include "physics/Line.h"
+#include "physics/Particle.h"
+#include "physics/Block.h"
+#include "physics/Collisions.h"
+
+#include "physics/Renderer.h"
+#include "physics/Simulation.h"
