@@ -89,14 +89,25 @@ void My_Renderer::draw(Particle ball, float R, float G, float B)
     }
 
     glColor3f(R, G, B);
-    glBegin(GL_LINE_LOOP);
+    
+    glBegin(GL_TRIANGLES);
+
+    float x = ball.radius * cosfs[SEGMENTS_IN_CIRCLE-1] * x_scale;
+    float y = ball.radius * sinfs[SEGMENTS_IN_CIRCLE-1] * y_scale;
     for (int ii = 0; ii < SEGMENTS_IN_CIRCLE; ii++)
     {
-        float x = ball.radius * cosfs[ii] * x_scale;
-        float y = ball.radius * sinfs[ii] * y_scale;
+        float xn = ball.radius * cosfs[ii] * x_scale;
+        float yn = ball.radius * sinfs[ii] * y_scale;
 
         glVertex2f(x_convertor(x + ball.position.x), y_convertor(y + ball.position.y));
+        glVertex2f(x_convertor(xn + ball.position.x), y_convertor(yn + ball.position.y));
+        glVertex2f(x_convertor(ball.position.x), y_convertor(ball.position.y));
+    
+        x = xn;
+        y = yn;
     }
+    
+
     glEnd();
 }
 

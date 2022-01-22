@@ -13,7 +13,9 @@
 int WINDOW_WIDTH = 1920;
 int WINDOW_HEIGHT = 1080;
 
+#ifndef SEGMENTS_IN_CIRCLE
 #define SEGMENTS_IN_CIRCLE 13
+#endif
 
 float X_MIN = 0;
 float Y_MIN = 0;

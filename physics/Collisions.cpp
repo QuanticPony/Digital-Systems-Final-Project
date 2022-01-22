@@ -171,13 +171,13 @@ void Collisions::resolveCollision(Line &line, Particle &ball)
 	bool done = false;
 
 	candidate = ball.position.subtract(line.position);
-	if (candidate.modulus() < ball.radius) {
+	if (candidate.modulus() < 0.8*ball.radius) {
 		dX = candidate.unitary().multiply(-1);
 		done = true;
 	}
 
 	candidate = ball.position.subtract(line.position.sume(line.line));
-	if (candidate.modulus() < ball.radius && !done) {
+	if (candidate.modulus() < 0.8*ball.radius && !done) {
 		dX = candidate.unitary().multiply(-1);
 		done = true;
 	}
