@@ -1,13 +1,21 @@
 # Digital-Systems-Final-Project
 
-January 2022:
+This repository contains the source code of my Digital Systems project (2021).
 
-This repository contains the source code of my Digital Systems project.
+## Project description
+A big red button connected via bluetooth with a computer with a Python interface. Rechargable  lithium ion battery. USB Type-C conexion for accesible chargeing and a touch controlled deep-sleep wake up.
+ 
+![image](BigRedButton/BigRedButton.jpg)
 
-## Contains
-* Source code of an esp32 micro controller used as a bluetooth button.
-* Python code for linking the esp32 board with a computer.
-* Some examples of use.
+
+## Repository content
+* [Source code](BigRedButton/BigRedButton.ino) of an esp32 micro controller used as a bluetooth button.
+* [Python code](BigRedButton/BigRedButton.py) for linking the esp32 board with a computer.
+* Some examples of use:
+    *   [Test](BigRedButton/test_interface.py)
+    *   [1 letter keyboard (space)](space_only_keyboard.py)
+    *   [Privacy button](privacy_button.py)
+* [C++ code](physics) with a simple physics engine as example of a button use.
 
 ## Run and compile
 To compile and run this code (c++) it is needed [freeglut](http://freeglut.sourceforge.net/) libraries.
