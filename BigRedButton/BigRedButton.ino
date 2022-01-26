@@ -77,7 +77,7 @@ void callback() {
 
 // Depp sleep manager
 void deep_sleep() {
-  #define Threshold 40
+  #define Threshold 50
   touchAttachInterrupt(T7, callback, Threshold);
 
   esp_sleep_enable_touchpad_wakeup();
