@@ -3,10 +3,9 @@
 This repository contains the source code of my Digital Systems project (2021).
 
 ## Project description
-A big red button connected via bluetooth with a computer with a Python interface. Rechargable  lithium ion battery. USB Type-C conexion for accesible chargeing and a touch controlled deep-sleep wake up.
+A big red button connected via bluetooth with a computer with a Python interface. Rechargable  lithium ion battery. USB Type-C conexion for accesible charging and a touch controlled deep-sleep wake up.
  
 ![image](BigRedButton/BigRedButton.jpg)
-
 
 ## Repository content
 * [Source code](BigRedButton/BigRedButton.ino) of an esp32 micro controller used as a bluetooth button.
